@@ -1,0 +1,340 @@
+/* === CALON SISWA SECTION Table start === */
+.calon-siswa-container {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  /* background-color: pink; */
+  gap: 20px;
+}
+
+.search-form{
+  position: relative;
+}
+
+.search-form i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 95px;
+  color: var(--text-muted);
+}
+
+.header-flex h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.search-form input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  flex: 1;
+}
+
+/* === TABLE WRAPPER === */
+
+.calon-siswa-container .table-responsive {
+  width: 100%;
+  overflow-x: auto; /* ✅ aktifkan scroll horizontal */
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+  border: 1px solid #9e9e9e;
+}
+
+/* === TABLE STYLE === */
+
+#table-calon-siswa {
+  width: 100%;
+  min-width: 950px; /* biar tabel tetap rapi */
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+#table-calon-siswa thead th {
+  background-color: #f8f9fb;
+  color: #333;
+  text-align: center;
+  font-weight: 600;
+  padding: 0.75rem;
+  border-bottom: 2px solid #e6e6e6;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+#table-calon-siswa tbody td {
+  padding: 0.65rem 0.8rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #9e9e9e;
+  white-space: nowrap;
+}
+
+#table-calon-siswa tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+#table-calon-siswa tbody tr:hover {
+  background-color: #f1f5ff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* === BUTTONS === */
+
+#table-calon-siswa .btn {
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+#table-calon-siswa .btn i {
+  margin-right: 4px;
+}
+
+.btn-info {
+  background-color: #3a8ef6;
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: #f7b500;
+  color: #fff;
+}
+
+.btn-info:hover {
+  background-color: #2279e9;
+}
+
+.btn-warning:hover {
+  background-color: #e0a200;
+}
+
+/* === TEXT STYLES === */
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #888 !important;
+}
+
+.text-danger {
+  color: #e63946 !important;
+}
+/* === CALON SISWA SECTION Table end === */
+
+/* === MODAL STATUS start === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 360px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h5 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #777;
+}
+
+.modal-body label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.modal-body select {
+  width: 100%;
+  padding: 0.45rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* === INPUT NOMINAL BAYAR === */
+
+#input-nominal {
+  margin-top: 0.5rem;
+}
+
+#input-nominal label {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+
+#input-nominal input[type="text"] {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  margin-bottom: 20px;
+  border: 1px solid #ccc; 
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s;
+}
+
+#input-nominal input[type="number"]:focus {
+  border-color: #3a8ef6;
+  box-shadow: 0 0 0 2px rgba(58, 142, 246, 0.2);
+}
+
+/* Placeholder style */
+#input-nominal input::placeholder {
+  color: #aaa;
+}
+
+.btn-cancel,
+.btn-save {
+  border: none;
+  border-radius: 6px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn-cancel {
+  background: #ccc;
+  color: #333;
+}
+
+.btn-save {
+  background: #3a8ef6;
+  color: #fff;
+}
+
+.btn-save:hover {
+  background: #2f7be2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* === MODAL STATUS end === */
+
+/* search form style super_admin start */
+.suggestionsCalonSiswa {
+  position: absolute;
+  top: 100%;
+  background: #fff;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 90.5%;
+  z-index: 10;
+}
+
+.suggestion-item {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.suggestion-item.active,
+.suggestion-item:hover {
+  background: #f0f0f0;
+}
+
+.suggestion-item strong {
+  color: #007bff;
+}
+
+.suggestion-item.no-result {
+  color: #777;
+  cursor: default;
+  font-style: italic;
+}
+
+.fa-times{
+  cursor: pointer;
+}
+/* search form style super_admin start */
+
+/* pagination calon siswa super_admin start */
+#paginationCalonSiswa {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+#paginationCalonSiswa .page-btn {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+#paginationCalonSiswa .page-btn:hover {
+  background: #007bff;
+  color: white;
+}
+
+#paginationCalonSiswa .page-btn.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+#paginationCalonSiswa .page-btn.prev,
+#paginationCalonSiswa .page-btn.next {
+  font-weight: bold;
+}
+
+/* pagination calon siswa super_admin end */

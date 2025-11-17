@@ -1,0 +1,19 @@
+{
+  "name": "ansvin/foundation",
+  "description": "Sistem informasi yayasan dengan MVC sederhana",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "authors": [
+    {
+      "name": "sam",
+      "email": "samuelmaraneswa60@gmail.com"
+    }
+  ],
+  "require": {
+    "dompdf/dompdf": "^3.1"
+  }
+}

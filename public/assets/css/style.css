@@ -1,0 +1,59 @@
+/* style.css - global styling */
+
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Reset & global */
+* {
+  font-family: 'Poppins', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll; /* paksa scrollbar selalu tampil */
+}
+
+body { 
+  overflow-x: hidden; 
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+}
+
+/* Global typography / utilities */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Optional: global variables (colors, radius, shadow) */
+:root {
+  --color-primary: #c21920;
+  --color-primary-hover: #a3171c;
+  --color-secondary: #334155;
+  --color-secondary-hover: #2b3646;
+  --color-blue: #007bff;
+  --color-blue-hover: #3b82f6;
+  --body-bg: #e4e4e4;
+  --body-bg2: #efefef;
+  --border-radius: 6px;
+  --box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  --text-muted: #646363;
+  --text-muted2: rgb(66, 66, 66);
+  --color-btn-go: #ad894e;
+  --color-btn-go-hover: #a57e3e;
+}

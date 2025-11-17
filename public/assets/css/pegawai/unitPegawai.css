@@ -1,0 +1,168 @@
+.search-form-unitPegawai{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex: 1;
+  gap: 5px;
+}
+
+.table-pegawai{
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', sans-serif;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-pegawai thead {
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: #fff;
+  text-align: left;
+  font-weight: 600;
+}
+
+.table-pegawai th, .table-pegawai tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-pegawai tbody tr:hover {
+  background-color: #f3f4f6;
+  transition: 0.2s;
+}
+
+.table-pegawai tbody tr.empty td {
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #adminUnitTable th, #adminUnitTable td {
+    padding: 10px;
+  }
+}
+
+.btn-edit-unitPegawai{
+  background-color: green;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.btn-delete-unitPegawai{
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-left: 5px;
+}
+
+.btn-edit-unitPegawai:hover{
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background: rgb(25, 159, 25);
+}
+
+.btn-delete-unitPegawai:hover{
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  background: red;
+}
+
+.table-pegawai tbody tr:hover td {
+  background-color: rgba(156, 154, 154, 0.1); /* sedikit lebih cerah */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* modal add admin unit start */
+.unitModal {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  z-index: 1000;
+}
+
+.modalUnit-content {
+  background: #fff;
+  padding: 5px;
+  width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  margin: 30px auto;
+}
+
+.modalUnit-inner{
+  max-height:calc(90vh - 40px);
+  overflow-y: auto;
+  padding: 20px 50px;
+}
+
+.nip-input{
+  color: var(--text-muted);
+}
+
+.modalUnit-content h2 {
+  margin-top:0;
+}
+
+.modalUnit-content .closeUnit {
+  float:right;
+  font-size:24px;
+  cursor:pointer;
+}
+.modalUnit-content label {
+  display:block;
+  margin-top:10px;
+  font-weight:600;
+}
+.modalUnit-content input, 
+.modalUnit-content select, 
+.modalUnit-content textarea {
+  width:100%;
+  padding:8px;
+  margin-top:4px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+.modalUnit-content button {
+  margin-top:15px;
+}
+
+.modalUnit-inner .btn-simpan{
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: #fff;
+  border: none;
+  width: 80px;
+  margin: 10px auto 0;
+  border-radius: 4px;
+  padding: 6px 8px;
+}
+
+.modalUnit-inner .btn-simpan:hover{
+  background: linear-gradient(90deg, #463edf, #595bef);
+}
+/* modal add admin unit end */
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.4s forwards;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

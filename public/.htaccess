@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Sesuaikan ini dengan nama folder project kamu di htdocs
+  RewriteBase /ansvin_foundation/public/
+
+  # Jika file atau folder yang diminta tidak ada,
+  # arahkan semua permintaan ke index.php
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+</IfModule>

@@ -1,0 +1,123 @@
+/* Footer */
+.footer {
+  background-color: #0e0e0e;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: sans-serif;
+  border-bottom:  1px solid rgba(255,255,255,0.3);
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-col {
+  flex: 1 1 250px;
+  min-width: 200px;
+}
+
+.footer-left h4,
+.footer-right h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-left, .footer-right{
+  text-align: center;
+  line-height: 1.7rem;
+}
+
+.footer-center img{
+  display: block;
+  margin: 10px auto;
+  width: 180px;
+  height: auto;
+}
+
+.footer-center h3 {
+  font-size: 20px;
+}
+
+.map-container {
+  margin-top: 10px;
+  padding: 20px 60px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+.map-container iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+  border-radius: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.footer-socials{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  justify-content: center;
+}
+
+.footer-right i{
+  margin-right: 5px;
+}
+
+.footer-right .footer-socials i{
+  margin: 20px 0;
+  font-size: 30px;
+  color: white;
+  transition: 0.3s ease;
+  text-shadow: 0 0 5px rgba(255,255,255,0.3); /* glow halus */
+}
+
+.footer-right .footer-socials i:hover{
+  cursor: pointer;
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #ff4d4d,
+    0 0 20px #ff4d4d,
+    0 0 30px #ff0000; /* efek bersinar merah */
+  transform: scale(1.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-left, .footer-right {
+    text-align: center;
+  }
+}

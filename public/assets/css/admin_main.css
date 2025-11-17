@@ -1,0 +1,10 @@
+.admin-content {
+  margin-left: 220px; /* ruang untuk sidebar */
+  padding-top: 69px;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.closed ~ .admin-content {
+  margin-left: 0;
+}

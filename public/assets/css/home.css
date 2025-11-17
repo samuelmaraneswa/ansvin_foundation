@@ -1,0 +1,627 @@
+/* carousel start */
+.hero-carousel {
+  position: relative;
+  overflow: hidden;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(80%);
+}
+
+/* Indicator dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-dots button {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dots button.active {
+  background: var(--color-primary);
+  transform: scale(1.2);
+  border: 1px solid white;
+}
+
+.carousel-dots button:hover {
+  background: #5dade2;
+}
+/* carousel end */
+
+/* welcome start */
+/* === Welcome Section Modern === */
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 40px;
+  background: linear-gradient(90deg, #fafafa, #f5f5f5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  color: #444;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* kiri */
+.welcome-kiri h2 {
+  font-size: 1.6rem;
+  color: var(--color-primary, #c62828);
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+
+.welcome-kiri span {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* tengah */
+.welcome-mid {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4rem;
+  font-weight: 500;
+}
+
+.welcome-mid p:first-child {
+  color: var(--color-primary, #c62828);
+  font-weight: 600;
+}
+
+/* kanan (tombol) */
+.welcome-kanan {
+  position: relative;
+  background: var(--color-btn-go, #c62828);
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 32px 10px 18px;
+  border-radius: 50px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.welcome-kanan button {
+  color: inherit;
+  background: none;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.welcome-kanan i {
+  position: absolute;
+  font-size: 13px;
+  top: 50%;
+  transform: translateY(-45%);
+  right: 15px;
+  color: white;
+}
+
+.welcome-kanan.show:hover {
+  background: var(--color-btn-go-hover, #b71c1c);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+/* responsif */
+@media (max-width: 768px) {
+  .welcome-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+  }
+  .welcome-mid {
+    text-align: left;
+  }
+}
+/* welcome end */
+
+/* school-information start */
+.school-information{
+  display: flex;
+  align-items: flex-start;
+  background-color: var(--body-bg2);
+  color: var(--text-muted2);
+}
+
+.school-information-kiri, .school-information-kanan{
+  flex: 1;
+  padding: 25px 35px;
+}
+
+.school-information-kiri{
+  font-size: 15px;
+  line-height: 1.6rem;
+}
+
+.school-information-kiri h2{
+  margin-bottom: 10px;
+  color: var(--color-primary);
+}
+
+.school-information-kiri p{
+  text-indent: 2rem;
+  font-size: 18px;
+}
+
+.school-information-kanan{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.school-information-kanan img{
+  width: 450px;
+  margin-top: -40px;
+}
+/* school-information end */
+
+/* join-us start */
+.join-us{
+  position: relative;
+  background: linear-gradient(
+      rgba(150, 0, 0, 0.7),   /* merah gelap transparan */
+      rgba(150, 0, 0, 0.7)
+    ),
+    url("http://localhost/ansvin_foundation/public/assets/img/join-us.jpg") center/cover no-repeat;
+  color: white;
+  padding: 25px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  background-attachment: fixed;
+}
+
+.join-us h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.join-us p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.btn-join {
+  background-color: white;
+  color: var(--color-primary);
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-join:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-2px);
+}
+/* join-us end */
+
+/* Animasi umum */
+.anim-item, .anim-load, .anim-scroll, .anim-left, .anim-right {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Arah awal */
+.anim-item, .anim-load, .anim-scroll { 
+  transform: translateY(30px); 
+}
+
+.anim-left { 
+  transform: translateX(-50px); 
+}
+
+.anim-right { 
+  transform: translateX(50px); 
+}
+
+/* Saat tampil */
+.anim-item.show, .anim-load.show, .anim-scroll.show, .anim-left.show, .anim-right.show {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+/* join us end */
+
+/* fasilitas start */
+.facilities {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f9f9f9;
+}
+
+.facilities h2 {
+  font-size: 2rem;
+  margin: 10px 0;
+  color: var(--color-primary);
+}
+
+.facilities p{
+  margin-bottom: 40px;
+}
+
+.facility-selengkapnya:hover {
+  background: var(--color-btn-go-hover, #b71c1c);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.facility-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  color: white;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column; /* ikon di atas, teks di bawah */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  transition: transform 0.3s ease;
+}
+
+.facility-lab {
+  background: url('http://localhost/ansvin_foundation/public/assets/img/sains-lab.jpg') center/cover no-repeat;
+}
+.facility-computer {
+  background: url('http://localhost/ansvin_foundation/public/assets/img/lab-com.jpg') center/cover no-repeat;
+}
+.facility-footbol {
+  background: url('http://localhost/ansvin_foundation/public/assets/img/football-field.jpg') center/cover no-repeat;
+}
+
+/* lapisan kaca merah */
+.facility-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55); 
+  backdrop-filter: blur(1px); /* efek kaca */
+  z-index: 0;
+}
+
+.facility-item * {
+  position: relative;
+  z-index: 1;
+}
+
+.facility-item i {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: var();
+}
+
+/* efek hover */
+.facility-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+.facility-item:hover::before {
+  transform: scale(1.05);
+}
+
+.facility-item p{
+  color: white;
+}
+
+.facility-more {
+  text-align: center;
+  margin-top: 30px;
+  position: relative;
+}
+
+.btn-facility {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  padding: 10px 40px 10px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.facility-more i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 5px;
+  /* right: 15px; */
+}
+
+.btn-facility:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+/* fasilitas end */
+
+/* kurikulum start */
+.educator-section {
+  width: 100%;
+  padding: 60px 0;
+  background-color: #f8f9fb;
+}
+
+.educator-section.bagian2{
+  padding-top: 20px;
+}
+
+.educator-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.educator-container.left-image .educator-image {
+  order: 1;
+}
+
+.educator-container.left-image .educator-text {
+  order: 2;
+}
+
+.educator-container.right-image .educator-text {
+  order: 1;
+}
+
+.educator-container.right-image .educator-image {
+  order: 2;
+}
+
+.educator-image img {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 1s ease;
+}
+
+.educator-text {
+  flex: 1;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 1s ease;
+}
+
+.educator-text h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+.educator-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #475569;
+}
+
+/* --- Animasi aktif saat scroll --- */
+.educator-section.show .educator-image img,
+.educator-section.show .educator-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Responsif */
+@media (max-width: 900px) {
+  .educator-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .educator-image img {
+    transform: none;
+    max-width: 100%;
+  }
+  .educator-text {
+    transform: none;
+  }
+}
+/* kurikulum end */
+
+/* school-event-environment start */
+.school-event-environment, .artikel{
+  background-color: var(--body-bg2);
+  padding: 30px 30px 60px 30px;
+  color: var(--text-muted2);
+}
+
+.environment-event, .artikel-top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px 0;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.env-event-judul, .artikel-judul{
+  font-size: 20px;
+  color: var(--color-primary);
+}
+
+.env-event-btn, .artikel-btn{
+  background-color: var(--color-primary);
+  color: white;
+  padding: 6px 27px 6px 13px;
+  border-radius: 5px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.env-event-btn:hover, .artikel-btn:hover{
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+.env-event-btn button, .artikel-btn button{
+  color: white;
+  font-size: 15px;
+}
+
+.env-event-btn i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 3px;
+}
+
+.artikel-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.artikel-card, .oartikel-card{
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+  padding: 15px;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.artikel-card:hover, .oartikel-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.artikel-card img, .oartikel-card img{
+  height: 225px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.artikel-card-body h3, .oartikel-card h3{
+  margin-top: 10px;
+}
+
+.artikel-card-body p, span, .oartikel-card p, span{
+  font-size: 15px;
+  text-indent: 1.5rem;
+}
+
+.artikel-card-body .card-date, .oartikel-card .card-date{
+  font-size: 12px;
+  display: block;
+  text-indent: 0;
+}
+
+.artikel-card-body .baca-selengkapnya{
+  color: rgb(134, 134, 134);
+}
+/* school-event-environment end */
+
+/* pangajar section start */
+.pengajar-section{
+  display: flex;
+  align-items: center;
+  padding: 80px;
+}
+
+.pengajar-section-top, .pengajar-section-body{
+  flex: 1;
+}
+
+.pengajar-section-top img{
+  width: 100%;
+  max-width: 450px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.pengajar-section-body{
+  color: var(--text-muted2);
+  margin-top: -20px;
+}
+
+.pengajar-section-body a{
+  position: relative;
+}
+
+.pengajar-section-body h2{
+  margin-bottom: 10px;
+  color: var(--color-primary);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.pengajar-section-body a h2:hover{
+  color: black;
+}
+
+.pengajar-section-body i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  left: 280px;
+}
+
+.pengajar-section-body p{
+  text-indent: 2rem;
+  line-height: 1.6rem;
+}
+/* pangajar section end */
+
