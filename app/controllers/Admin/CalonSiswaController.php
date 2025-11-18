@@ -169,7 +169,7 @@ class CalonSiswaController extends AdminController
       if (trim($keyword) === '') {
         echo json_encode([
           'status' => 'error',
-          'message' => 'Keyword pencarian kosong.',
+          'message' => 'Keyword pencarian kosong.', 
           'data' => []
         ]);
         return;

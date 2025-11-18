@@ -1,5 +1,15 @@
 <div class="calon-siswa-container">
-  <h4>Data Calon Siswa</h4>
+  <div class="header-flex">
+    <h4>Data Calon Siswa</h4>
+
+    <form id="searchFormCalonSiswaUnit" class="search-form">
+      <input type="text" id="searchInputCalonSiswaUnit" placeholder="Cari nama calon siswa..." />
+      <i id="searchIconCalonSiswaUnit" class="fa fa-search"></i>
+      <div id="suggestionsCalonSiswaUnit" class="suggestionsCalonSiswa"></div>
+
+      <button type="submit">Search</button>
+    </form>
+  </div>
 
   <!-- Tabel -->
   <div class="table-responsive">
@@ -24,6 +34,9 @@
       </tbody>
     </table>
   </div>
+
+  <div id="paginationCalonSiswaUnit" class="pagination-container"></div>
+
 </div>
 
 <!-- Modal Ubah Status (tanpa Bootstrap) -->
@@ -35,7 +48,7 @@
     </div>
 
     <div class="modal-body">
-      <form id="form-ubah-status"> 
+      <form id="form-ubah-status">
         <input type="hidden" id="status-id" name="id">
 
         <label for="status-bayar">Status Pembayaran:</label>
@@ -43,11 +56,11 @@
           <option value="BELUM">BELUM</option>
           <option value="CICIL">CICIL</option>
           <option value="LUNAS">LUNAS</option>
-        </select> 
+        </select>
 
         <div id="input-nominal" style="display:none;">
           <label for="nominal-bayar">Nominal Dibayar (Rp)</label>
-          <input type="text" id="nominal-bayar" name="nominal_bayar"  placeholder="0" />
+          <input type="text" id="nominal-bayar" name="nominal_bayar" placeholder="0" />
         </div>
 
         <div class="modal-actions">

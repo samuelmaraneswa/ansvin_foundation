@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
-  /* background-color: pink; */
+  position: relative;
   gap: 20px;
 }
 
@@ -265,7 +265,8 @@
 /* === MODAL STATUS end === */
 
 /* search form style super_admin start */
-.suggestionsCalonSiswa {
+.calon-siswa-container{position: relative;overflow: visible;}
+.suggestionsCalonSiswa { 
   position: absolute;
   top: 100%;
   background: #fff;
@@ -274,7 +275,7 @@
   max-height: 200px;
   overflow-y: auto;
   width: 90.5%;
-  z-index: 10;
+  z-index: 9999;
 }
 
 .suggestion-item {
@@ -299,6 +300,11 @@
 
 .fa-times{
   cursor: pointer;
+}
+
+.suggestions-item.no-data{
+  font-size: 14px;
+  font-style: italic;
 }
 /* search form style super_admin start */
 
@@ -336,5 +342,46 @@
 #paginationCalonSiswa .page-btn.next {
   font-weight: bold;
 }
-
 /* pagination calon siswa super_admin end */
+
+/* admin_unit calon-siswa style start */
+.suggestions-item.active {
+  background: #f0f0f0;             
+}
+/* admin_unit calon-siswa style end */
+
+/* pagination admin-unit calon-siswa start */
+.pagination-container {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.pagination-container button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.pagination-container button:hover {
+  background: #f1f1f1;
+}
+
+.pagination-container button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* untuk tombol < dan > */
+.pagination-container button.page-btn-prev,
+.pagination-container button.page-btn-next {
+  font-weight: bold;
+  padding: 6px 10px;
+}
+/* pagination admin-unit calon-siswa end */

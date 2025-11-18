@@ -387,7 +387,7 @@ class CalonSiswa extends Database
     return $stmt->fetch(\PDO::FETCH_ASSOC) ?: null;
   }
 
-  public function getAllWithBillingByUnit(int $unit_id): array
+  public function getAllWithBillingByUnit(int $unit_id, int $limit, int $offset): array
   {
     $stmt = $this->db->prepare("
         SELECT 
@@ -404,8 +404,14 @@ class CalonSiswa extends Database
             ON b.calon_siswa_id = cs.id
         WHERE cs.unit_id = :unit_id
         ORDER BY cs.id DESC
+        LIMIT :limit OFFSET :offset
     ");
-    $stmt->execute(['unit_id' => $unit_id]);
+
+    $stmt->bindValue(':unit_id', $unit_id, \PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, \PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, \PDO::PARAM_INT);
+
+    $stmt->execute();
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
 
@@ -480,7 +486,7 @@ class CalonSiswa extends Database
         LEFT JOIN billing_pendaftaran AS bp ON bp.calon_siswa_id = cs.id
         WHERE cs.nama_lengkap LIKE :keyword
         ORDER BY cs.id DESC
-        LIMIT :limit OFFSET :offset
+        LIMIT :limit OFFSET :offset 
     ");
 
     $stmt->bindValue(':keyword', "%{$keyword}%", \PDO::PARAM_STR);
@@ -491,6 +497,40 @@ class CalonSiswa extends Database
     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
   }
 
+  public function searchByUnit(int $unit_id, string $keyword, int $limit, int $offset): array
+  {
+    $stmt = $this->db->prepare("
+        SELECT 
+          cs.id,
+          cs.no_pendaftaran,
+          cs.nama_lengkap,
+          cs.status_pendaftaran,
+          u.nama AS unit,
+          ta.nama_tahun AS tahun_ajaran,
+          bp.status_bayar,
+          bp.total_tagihan,
+          bp.total_bayar,
+          bp.sisa_tagihan
+        FROM calon_siswa AS cs
+        LEFT JOIN unit_sekolah AS u ON cs.unit_id = u.id
+        LEFT JOIN tahun_ajaran AS ta ON cs.tahun_ajaran_id = ta.id
+        LEFT JOIN billing_pendaftaran AS bp ON bp.calon_siswa_id = cs.id
+        WHERE cs.unit_id = :unit_id AND cs.nama_lengkap LIKE :keyword
+        ORDER BY cs.id DESC
+        LIMIT :limit OFFSET :offset
+    ");
+
+    $stmt->bindValue(':unit_id', $unit_id, \PDO::PARAM_INT);
+    $stmt->bindValue(':keyword', "%{$keyword}%", \PDO::PARAM_STR);
+    $stmt->bindValue(':limit', $limit, \PDO::PARAM_INT);
+    $stmt->bindValue(':offset', $offset, \PDO::PARAM_INT);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
+
+
   public function countSearch(string $keyword): int
   {
     $stmt = $this->db->prepare("SELECT COUNT(*) FROM calon_siswa WHERE nama_lengkap LIKE :keyword");
@@ -498,4 +538,29 @@ class CalonSiswa extends Database
     return (int) $stmt->fetchColumn();
   }
 
+  public function countByUnit($unit_id)
+  {
+    $sql = "SELECT COUNT(*) AS total FROM calon_siswa WHERE unit_id = ?";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$unit_id]);
+    $row = $stmt->fetch();
+    return $row['total'] ?? 0;
+  }
+
+  public function countSearchByUnit(int $unit_id, string $keyword): int
+  {
+    $stmt = $this->db->prepare("
+        SELECT COUNT(*) AS total
+        FROM calon_siswa
+        WHERE unit_id = :unit_id
+        AND nama_lengkap LIKE :keyword
+    ");
+
+    $stmt->bindValue(':unit_id', $unit_id, \PDO::PARAM_INT);
+    $stmt->bindValue(':keyword', '%' . $keyword . '%', \PDO::PARAM_STR);
+    $stmt->execute();
+
+    $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+    return $row['total'] ?? 0;
+  }
 }

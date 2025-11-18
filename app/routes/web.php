@@ -87,4 +87,4 @@ Route::get('/admin/pendaftaran/detail/{id}', 'PendaftaranController@detail');
 Route::get('/unit/{slug}/calon-siswa', 'Unit\UnitCalonSiswaController@index');
 Route::get('/unit/{slug}/calon-siswa/fetchAll', 'Unit\UnitCalonSiswaController@fetchAll');
 Route::post('/unit/{slug}/calon-siswa/updateStatus', 'Unit\UnitCalonSiswaController@updateStatus');
-// Route::get('/unit/{slug}/calon-siswa/search', 'Unit\UnitCalonSiswaController@search');
+Route::get('/unit/{slug}/calon-siswa/search', 'Unit\UnitCalonSiswaController@search');

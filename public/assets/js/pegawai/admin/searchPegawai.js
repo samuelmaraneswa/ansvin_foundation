@@ -63,7 +63,7 @@ export function initSearchPegawai(base_url){
     if(!result?.data || result.data.length === 0){
       const div = document.createElement("div")
       div.className = "suggestions-item no-result";
-      div.textContent = "Tidak ada data ditemukan.";
+      div.textContent = "Tidak ada data ditemukan."; 
       suggestions.appendChild(div);
       suggestions.style.display = "block";
       return;

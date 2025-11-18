@@ -47,12 +47,25 @@ class UnitCalonSiswaController extends AdminController
           throw new \Exception('Unit tidak ditemukan pada sesi login.');
       }
 
+      $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+      $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 5;
+      $offset = ($page - 1) * $limit;
+
+      $totalData = $this->calonModel->countByUnit($unit_id);
+      $totalPages = ceil($totalData / $limit);
+
       // Ambil data calon siswa hanya untuk unit ini
-      $data = $this->calonModel->getAllWithBillingByUnit($unit_id);
+      $data = $this->calonModel->getAllWithBillingByUnit($unit_id, $limit, $offset);
 
       echo json_encode([
           'status' => 'success',
-          'data' => $data
+          'data' => $data,
+          'pagination' => [
+            'page' => $page,
+            'limit' => $limit,
+            'total_data' => $totalData,
+            'total_pages' => $totalPages
+          ]
       ]);
     } catch (\Exception $e) {
       echo json_encode([
@@ -136,38 +149,43 @@ class UnitCalonSiswaController extends AdminController
     }
   }
 
-  // public function search($slug)
-  // {
-  //   header('Content-Type: application/json');
+  public function search(): void
+  {
+    header('Content-Type: application/json');
 
-  //   $keyword = $_GET['keyword'] ?? '';
-  //   if (empty($keyword)) {
-  //     echo json_encode([
-  //       'status' => 'error',
-  //       'message' => 'Keyword pencarian kosong.'
-  //     ]);
-  //     return;
-  //   }
+    $keyword = $_GET['keyword'] ?? '';
+    $unit_id = $_SESSION['user']['unit_id'] ?? null;
 
-  //   // Ambil unit berdasarkan slug
-  //   $unit = $unitModel->getBySlug($slug);
+    $page  = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    $limit = isset($_GET['limit']) ? (int)$_GET['limit'] : 5;
+    $offset = ($page - 1) * $limit;
 
-  //   if (!$unit) {
-  //     echo json_encode([
-  //       'status' => 'error',
-  //       'message' => 'Unit tidak ditemukan.'
-  //     ]);
-  //     return;
-  //   }
+    try{
+      if(!$unit_id){
+        throw new \Exception("Unit tidak di temukan.");
+      }
 
-  //   // Ambil data calon siswa berdasarkan unit dan keyword
-  //   $calonModel = new CalonSiswa();
-  //   $data = $calonModel->searchByUnit($unit['id'], $keyword);
+      $totalData = $this->calonModel->countSearchByUnit($unit_id, $keyword);
+      $totalPages = ceil($totalData / $limit);
 
-  //   echo json_encode([
-  //     'status' => 'success',
-  //     'data' => $data
-  //   ]);
-  // }
+      $result = $this->calonModel->searchByUnit($unit_id, $keyword, $limit, $offset);
 
+      echo json_encode([
+        'status' => 'success',
+        'data' => $result,
+        'pagination' => [
+          'page' => $page,
+          'limit' => $limit,
+          'total_data' => $totalData,
+          'total_pages' => $totalPages
+        ]
+      ]);
+
+    }catch(\Exception $e){
+      echo json_encode([
+        'status' => 'error',
+        'message' => $e->getMessage()
+      ]);
+    }
+  }
 }

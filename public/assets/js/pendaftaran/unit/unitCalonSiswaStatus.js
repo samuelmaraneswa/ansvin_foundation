@@ -22,7 +22,10 @@ export async function updateUnitCalonSiswaStatus(formData, onSuccess, onError) {
 
     if (result.status === "success") {
       alertSuccess(result.message || "Status pembayaran berhasil diperbarui.");
-      renderUnitCalonSiswaTable(); // 🔄 refresh tabel
+      
+      const keyword = document.getElementById("searchInputCalonSiswaUnit").value.trim();
+      renderUnitCalonSiswaTable(keyword, 1, 5);
+
       if (onSuccess) onSuccess(result);
     } else {
       alertError(result.message || "Gagal memperbarui status.");

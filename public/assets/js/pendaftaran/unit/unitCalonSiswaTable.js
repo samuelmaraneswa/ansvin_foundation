@@ -1,5 +1,5 @@
 // public/assets/js/pendaftaran/unit/unitCalonSiswaTable.js
-export function renderUnitCalonSiswaTable() {
+export function renderUnitCalonSiswaTable(keyword = "", page = 1, limit = 5) {
   const tableBody = document.querySelector("#table-calon-siswa tbody");
   if (!tableBody) return;
 
@@ -17,17 +17,30 @@ export function renderUnitCalonSiswaTable() {
   const unitIndex = parts.indexOf("unit");
   const slug = unitIndex !== -1 ? parts[unitIndex + 1] : null;
   // fetch data calon siswa milik unit admin
-  fetch(`${base_url}/unit/${slug}/calon-siswa/fetchAll`)
+
+  const url = keyword
+    ? `${base_url}/unit/${slug}/calon-siswa/search?keyword=${encodeURIComponent(
+        keyword
+      )}&page=${page}&limit=${limit}`
+    : `${base_url}/unit/${slug}/calon-siswa/fetchAll?page=${page}&limit=${limit}`;
+
+  fetch(url)
     .then((res) => res.json())
-    .then((result) => {
-      if (result.status !== "success" || !result.data.length) {
+    .then((result) => {console.log(result)
+      if (result.status !== "success") {
         tableBody.innerHTML = `
-          <tr>
-            <td colspan="9" class="text-center text-muted py-3">
-              Tidak ada data calon siswa.
-            </td>
-          </tr>
+          <tr><td colspan="9" class="text-center text-danger py-3">Terjadi kesalahan.</td></tr>
         `;
+              return;
+            }
+
+            if (!result.data.length) {
+              tableBody.innerHTML = `
+          <tr><td colspan="9" class="text-center text-muted py-3">Tidak ada data calon siswa.</td></tr>
+        `;
+
+        document.getElementById("paginationCalonSiswaUnit").innerHTML = "";
+
         return;
       }
 
@@ -36,7 +49,7 @@ export function renderUnitCalonSiswaTable() {
         .map(
           (s, i) => `
           <tr>
-            <td>${i + 1}</td>
+            <td>${(page - 1) * limit + i + 1}</td>
             <td>${s.no_pendaftaran || "-"}</td>
             <td>${s.nama_lengkap || "-"}</td>
             <td>${s.status_pendaftaran || "-"}</td>
@@ -74,6 +87,12 @@ export function renderUnitCalonSiswaTable() {
         `
         )
         .join("");
+
+        if (result.pagination && result.pagination.total_pages > 1) {
+          renderPagination(result.pagination, keyword, limit);
+        } else {
+          document.getElementById("paginationCalonSiswaUnit").innerHTML = "";
+        }
     })
     .catch((err) => {
       console.error("Gagal memuat data calon siswa unit:", err);
@@ -85,4 +104,33 @@ export function renderUnitCalonSiswaTable() {
         </tr>
       `;
     });
+}
+
+function renderPagination(pagination, keyword, limit){
+  const paginationBox = document.getElementById("paginationCalonSiswaUnit")
+  if(!paginationBox) return;
+
+  const {page, total_pages} = pagination;
+  let html ="";
+
+  if(page > 1){
+    html += `<button class="page-btn-prev" data-page="${page - 1}">⟨</button>`;
+  }
+
+  for(let i = 1; i <= total_pages; i++){
+    html += `<button class="page-btn ${i === page ? "active" : ""}" data-page="${i}">${i}</button>`;
+  }
+
+  if(page < total_pages){
+    html += `<button class="page-btn-next" data-page="${page + 1}">⟩</button>`;
+  }
+
+  paginationBox.innerHTML = html;
+
+  paginationBox.querySelectorAll("button").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selectedPage = parseInt(btn.dataset.page);
+      renderUnitCalonSiswaTable(keyword, selectedPage, limit)
+    })
+  })
 }

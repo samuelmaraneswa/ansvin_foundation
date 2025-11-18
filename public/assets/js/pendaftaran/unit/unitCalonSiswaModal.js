@@ -41,6 +41,8 @@ export function initUnitUbahStatusModal() {
   statusSelect.addEventListener("change", () => {
     inputNominal.style.display =
       statusSelect.value === "CICIL" ? "block" : "none";
+
+    nominalInput.focus();
   });
 
   // format angka input nominal
