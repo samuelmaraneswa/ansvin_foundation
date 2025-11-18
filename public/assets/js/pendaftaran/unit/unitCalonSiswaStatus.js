@@ -10,7 +10,7 @@ import { renderUnitCalonSiswaTable } from "./unitCalonSiswaTable.js";
  * @param {Function} onError - callback jika gagal
  */
 export async function updateUnitCalonSiswaStatus(formData, onSuccess, onError) {
-  try {
+  try { 
     // Ambil slug unit dari URL, contoh: /unit/smp/calon-siswa
     const parts = window.location.pathname.split("/");
     const unitIndex = parts.indexOf("unit");

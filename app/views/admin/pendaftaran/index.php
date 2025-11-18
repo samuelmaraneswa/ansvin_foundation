@@ -40,7 +40,7 @@
 
 <!-- Modal Ubah Status (tanpa Bootstrap) -->
 <div id="modal-status" class="modal-overlay" style="display: none;">
-  <div class="modal-box">
+  <div class="modal-box"> 
     <div class="modal-header">
       <h5>Ubah Status Pembayaran</h5>
       <button class="modal-close" id="close-modal">&times;</button>

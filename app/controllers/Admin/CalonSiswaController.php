@@ -64,7 +64,7 @@ class CalonSiswaController extends AdminController
   {
     header('Content-Type: application/json');
 
-    try {
+    try { 
       $id = $_POST['id'] ?? null;
       $statusBayar = strtoupper(trim($_POST['status_bayar'] ?? ''));
       $nominalBayar = (float) ($_POST['nominal_bayar'] ?? 0);

@@ -70,13 +70,15 @@ Route::get('/unit/{slug}/pegawai/search', 'Unit\UnitPegawaiController@search');
 
 // Halaman form pendaftaran SMP
 Route::get('/pendaftaran/smp', 'PendaftaranController@formSmp');
+Route::get('/pendaftaran/sma', 'PendaftaranController@formSma');
 
 // Proses form pendaftaran SMP
 Route::post('/pendaftaran/smp/store', 'PendaftaranController@storeSmp'); 
+Route::post('/pendaftaran/sma/store', 'PendaftaranController@storeSma'); 
 Route::get('/pendaftaran/sukses', 'PendaftaranController@sukses');
 Route::get('/pendaftaran/pdf', 'PendaftaranController@pdf');
 
-// app/core/Route.php
+// app/core/Route.php 
 Route::get('/admin/pendaftaran', 'Admin\CalonSiswaController@index');
 Route::get('/admin/pendaftaran/fetchAll', 'Admin\CalonSiswaController@fetchAll');
 Route::post('/admin/pendaftaran/updateStatus', 'Admin\CalonSiswaController@updateStatus');

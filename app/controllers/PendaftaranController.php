@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Core\FlashMessage;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use App\Helpers\Validator;
 
 class PendaftaranController extends Controller
 {
@@ -41,6 +42,16 @@ class PendaftaranController extends Controller
     $this->view('layouts/public_main', [
       'title' => 'Formulir Pendaftaran SMP Ansvin',
       'content' => 'pendaftaran/form_smp',
+      'page' => 'pendaftaran',
+      'base_url' => Config::get('base_url'),
+    ]);
+  }
+  
+  public function formSma(): void
+  {
+    $this->view('layouts/public_main', [
+      'title' => 'Formulir Pendaftaran SMA Ansvin',
+      'content' => 'pendaftaran/form_sma',
       'page' => 'pendaftaran',
       'base_url' => Config::get('base_url'),
     ]);
@@ -84,6 +95,81 @@ class PendaftaranController extends Controller
       ]);
 
       // Ambil template biaya aktif untuk SMP
+      $template = $this->biayaMaster->getActiveByUnit($unit_id, $tahun_ajaran_id);
+
+      // Ambil detail biaya template dan hitung total tagihan
+      $items = $this->biayaDetail->getByTemplate($template['id']);
+      $totalTagihan = 0;
+      foreach ($items as $i) {
+        $totalTagihan += (float) $i['nominal'];
+      }
+
+      // Simpan ke billing_assignment
+      $this->billingPendaftaran->insert([ 
+        'calon_siswa_id' => $calon_id,
+        'total_tagihan' => $totalTagihan,
+        'total_bayar' => 0,
+        'sisa_tagihan' => $totalTagihan,
+        'status_bayar' => 'BELUM'
+      ]);
+
+      // Redirect ke halaman sukses
+      header("Location: " . Config::get('base_url') . "/pendaftaran/sukses?kode={$no_pendaftaran}");
+      exit;
+
+    } catch (\Exception $e) {
+      FlashMessage::set('error', $e->getMessage());
+    }
+  }
+  
+  public function storeSma(): void
+  {
+    try {
+      // Ambil input form
+      $nama = trim($_POST['nama_lengkap'] ?? '');
+      $tanggal_lahir = $_POST['tanggal_lahir'] ?? '';
+      $alamat = trim($_POST['alamat'] ?? '');
+
+      // Validasi sederhana
+      $validator = new Validator($_POST);
+      $validator->required(['nama_lengkap','tanggal_lahir','alamat'])
+                ->maxLength('nama_lengkap', 100)
+                ->minLength('nama_lengkap', 3);
+
+      if($validator->hasErrors()){
+        echo json_encode([
+          'status' => 'error',
+          'errors' => $validator->getErrors()
+        ]);
+        return;
+      }
+
+      //sanitasi
+      $nama = $validator->sanitize('nama_lengkap');
+      $tanggal_lahir = $validator->sanitize('tanggal_lahir');
+      $alamat = $validator->sanitize('alamat');
+
+      // Ambil tahun ajaran aktif
+      $tahunAktif = $this->tahunModel->getActive(); 
+
+      $tahun_ajaran_id = $tahunAktif['id'];
+      $unit_id = 4; // SMA Ansvin
+
+      // Generate nomor pendaftaran: ANV + 2digit tahun + kode unit + nomor urut
+      $no_pendaftaran = $this->calonModel->generateNoPendaftaran($unit_id, $tahun_ajaran_id);
+
+      // Simpan ke tabel calon_siswa (tanpa file)
+      $calon_id = $this->calonModel->insert([
+        'no_pendaftaran' => $no_pendaftaran,
+        'nama_lengkap' => $nama,
+        'tanggal_lahir' => $tanggal_lahir,
+        'alamat' => $alamat,
+        'unit_id' => $unit_id,
+        'tahun_ajaran_id' => $tahun_ajaran_id,
+        'status_pendaftaran' => 'MENUNGGU_PEMBAYARAN',
+      ]);
+
+      // Ambil template biaya aktif untuk SMA
       $template = $this->biayaMaster->getActiveByUnit($unit_id, $tahun_ajaran_id);
 
       // Ambil detail biaya template dan hitung total tagihan

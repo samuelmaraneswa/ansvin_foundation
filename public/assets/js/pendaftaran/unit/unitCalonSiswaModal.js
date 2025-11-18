@@ -10,7 +10,7 @@ export function initUnitUbahStatusModal() {
 
   const statusSelect = document.getElementById("status-bayar");
   const inputNominal = document.getElementById("input-nominal");
-  const nominalInput = document.getElementById("nominal-bayar");
+  const nominalInput = document.getElementById("nominal-bayar"); 
 
   // buka modal saat klik tombol ubah status
   document.addEventListener("click", (e) => {
