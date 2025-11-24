@@ -34,8 +34,8 @@ $unitSlug = $unitSlugMap[$user['unit_id']] ?? null;
   <!-- menu -->
   <ul class="sidebar-menu">
     <li>
-      <a class="<?= ($page == 'dashboard') ? 'active' : '' ?>" 
-         href="<?= $base ?>/admin/dashboard">Dashboard</a>
+      <a class="<?= ($page == 'dashboard') ? 'active' : '' ?>"
+        href="<?= $base ?>/admin/dashboard">Dashboard</a>
     </li>
 
     <?php if ($user && $user['role'] === 'super_admin'): ?>
@@ -51,9 +51,9 @@ $unitSlug = $unitSlugMap[$user['unit_id']] ?? null;
     <?php endif; ?>
 
     <li>
-      <a class="<?= ($page == 'artikel') ? 'active' : '' ?>" 
-         href="<?= $base ?>/<?= $rolePrefix ?>/<?= $unitSlug ? $unitSlug . '/' : '' ?>artikel">
-         Artikel
+      <a class="<?= ($page == 'artikel') ? 'active' : '' ?>"
+        href="<?= $base ?>/<?= $rolePrefix ?>/<?= $unitSlug ? $unitSlug . '/' : '' ?>artikel">
+        Artikel
       </a>
     </li>
 
@@ -71,9 +71,31 @@ $unitSlug = $unitSlugMap[$user['unit_id']] ?? null;
         </a>
       </li>
     <?php elseif ($user['role'] === 'admin_unit' && $unitSlug): ?>
-      <li><a href="<?= $base ?>/unit/<?= $unitSlug ?>/pegawai">Pegawai</a></li>
+      <li>
+        <a class="<?= ($page == 'pegawai') ? 'active' : '' ?>"
+          href="<?= $base ?>/unit/<?= $unitSlug ?>/pegawai">Pegawai
+        </a>
+      </li>
     <?php endif; ?>
-    
+
+    <?php if ($user && $user['role'] === 'admin_unit'): ?>
+      <li class="has-submenu <?= ($page == 'mapel' || $page == 'jadpel') ? 'open' : '' ?>">
+        <a href="javascript:void(0)">Pelajaran</a>
+        <ul class="submenu">
+          <li>
+            <a class="<?= ($page == 'mapel') ? 'active-submenu' : '' ?>"
+              href="<?= $base ?>/unit/<?= $unitSlug ?>/mapel">Mata Pelajaran</a>
+          </li>
+          <li>
+            <a class="<?= ($page == 'jadpel') ? 'active' : '' ?>"
+              href="<?= $base ?>/unit/<?= $unitSlug ?>/jadpel">Jadwal Pelajaran</a>
+          </li>
+          <li><a href="<?= $base ?>/unit/smp">Ansvin SMP</a></li>
+          <li><a href="<?= $base ?>/unit/sma">Ansvin SMA</a></li>
+        </ul>
+      </li>
+    <?php endif; ?>
+
     <!-- Siswa -->
     <li class="has-submenu <?= ($page == 'calon_siswa' || $page == 'siswa') ? 'open' : '' ?>">
       <a href="javascript:void(0)">Siswa</a>
@@ -129,5 +151,6 @@ $unitSlug = $unitSlugMap[$user['unit_id']] ?? null;
         Laporan
       </a>
     </li>
+
   </ul>
 </aside>

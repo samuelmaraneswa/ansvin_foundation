@@ -1,7 +1,7 @@
 import { fetchUnitPegawaiData } from "./pegawaiUnitTable.js";
 import { initModalUnitEvents } from "./modalPegawaiUnit.js";
 import { initUnitPegawaiForm } from "./pegawaiUnitForm.js";
-import { initUnitPegawaiEdit } from "./pegawaiUnitEdit.js";
+import { initUnitPegawaiEdit } from "./pegawaiUnitEdit.js"; 
 import { initUnitPegawaiDelete } from "./pegawaiUnitDelete.js";
 import { initUnitPegawaiSearch } from "./searchUnitPegawai.js";
 

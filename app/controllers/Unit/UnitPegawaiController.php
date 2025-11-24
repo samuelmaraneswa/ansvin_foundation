@@ -167,7 +167,7 @@ class UnitPegawaiController extends AdminController
         $nip           = $validator->sanitize('nipUnit');
         $jabatan_id    = (int)$_POST['jabatan_id_unit'];
         $email         = $validator->sanitize('email_unit');
-        $telepon       = $validator->sanitize('telepon_unit');
+        $telepon       = $validator->sanitize('telepon_unit'); 
         $tanggal_lahir = $_POST['tanggal_lahir_unit'] ?? null;
         $alamat        = $validator->sanitize('alamat_unit');
         $status_aktif  = $_POST['status_aktif_unit'] ?? 1;

@@ -1,65 +1,60 @@
 <div class="main-content">
   <?php
+
   use App\Core\FlashMessage;
+
   FlashMessage::show();
   ?>
 
   <div class="dashboard-cards">
     <!-- Card Artikel -->
-    <div class="card">
-      <div class="card-icon"> 
-        <i class="fa-solid fa-newspaper"></i>
+    <a href="<?= $base_url ?>/admin/artikel">
+      <div class="card">
+        <div class="card-icon">
+          <i class="fa-solid fa-newspaper"></i>
+        </div>
+        <div class="card-content">
+          <h2>Artikel</h2>
+          <p class="card-value">Total: 1000 </p>
+        </div>
       </div>
-      <div class="card-content">
-        <h3>Total Artikel</h3>
-        <p class="card-value"><?= htmlspecialchars($articleCount ?? '0') ?></p>
-        <p class="card-subtext">
-          Artikel terbaru: <b><?= htmlspecialchars($latestArticle['judul'] ?? '-') ?></b>
-        </p>
-        <a href="<?= $base ?>/admin/artikel" class="card-link">Lihat Artikel</a>
+    </a>
+
+    <a href="">
+      <div class="card">
+        <div class="card-icon icon-fasilitas">
+          <i class="fa fa-building icon-building"></i>
+        </div>
+        <div class="card-content">
+          <h2>Fasilitas</h2>
+          <p class="card-value">Total: 1000 </p>
+        </div>
       </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-icon">
-        <i class="fa-solid fa-newspaper"></i>
+    </a>
+
+    <a href="<?= $base_url ?>/admin/pegawai">
+      <div class="card">
+        <div class="card-icon icon-pegawai">
+          <i class="fa-solid fa-user-group"></i>
+        </div>
+        <div class="card-content">
+          <h2>Pegawai</h2>
+          <p class="card-value">Total: 100 </p>
+        </div>
       </div>
-      <div class="card-content">
-        <h3>Total Artikel</h3>
-        <p class="card-value"><?= htmlspecialchars($articleCount ?? '0') ?></p>
-        <p class="card-subtext">
-          Artikel terbaru: <b><?= htmlspecialchars($latestArticle['judul'] ?? '-') ?></b>
-        </p>
-        <a href="<?= $base ?>/admin/artikel" class="card-link">Lihat Artikel</a>
+    </a>
+
+    <a href="<?= $base_url ?>">
+      <div class="card">
+        <div class="card-icon icon-siswa">
+          <i class="fas fa-user-graduate"></i>
+        </div>
+        <div class="card-content">
+          <h2>Siswa</h2>
+          <p class="card-value">Total: 1000 </p>
+        </div>
       </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-icon">
-        <i class="fa-solid fa-newspaper"></i>
-      </div>
-      <div class="card-content">
-        <h3>Total Artikel</h3>
-        <p class="card-value"><?= htmlspecialchars($articleCount ?? '0') ?></p>
-        <p class="card-subtext">
-          Artikel terbaru: <b><?= htmlspecialchars($latestArticle['judul'] ?? '-') ?></b>
-        </p>
-        <a href="<?= $base ?>/admin/artikel" class="card-link">Lihat Artikel</a>
-      </div>
-    </div>
-    
-    <div class="card">
-      <div class="card-icon">
-        <i class="fa-solid fa-newspaper"></i>
-      </div>
-      <div class="card-content">
-        <h3>Total Artikel</h3>
-        <p class="card-value"><?= htmlspecialchars($articleCount ?? '0') ?></p>
-        <p class="card-subtext">
-          Artikel terbaru: <b><?= htmlspecialchars($latestArticle['judul'] ?? '-') ?></b>
-        </p>
-        <a href="<?= $base ?>/admin/artikel" class="card-link">Lihat Artikel</a>
-      </div>
-    </div>
+    </a>
+
   </div>
 </div>

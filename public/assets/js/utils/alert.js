@@ -42,3 +42,14 @@ export function alertError(message = "Terjadi kesalahan!") {
     text: message,
   });
 }
+
+export function alertConfirm2(message = "Yakin ingin menghapus data ini?"){
+  return Swal.fire({
+    icon: "warning",
+    title: "Konfirmasi",
+    text: message,
+    showCancelButton: true,
+    confirmButtonText: "Ya, Hapus",
+    cancelButtonText: "Batal",
+  });
+}

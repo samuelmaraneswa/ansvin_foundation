@@ -142,7 +142,7 @@ class Pegawai{
 
     // Bind parameter dinamis
     foreach ($params as $key => $value) {
-        $stmt->bindValue($key, $value);
+      $stmt->bindValue($key, $value);
     }
 
     // Bind khusus untuk limit dan offset (harus tipe INT)

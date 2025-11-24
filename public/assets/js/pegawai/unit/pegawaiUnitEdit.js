@@ -15,7 +15,7 @@ export function initUnitPegawaiEdit() {
     if (!id) return;
 
     // Ambil slug dari URL aktif (misal /unit/smp/pegawai)
-    const slug = window.location.pathname.split("/")[2];
+    const slug = window.location.pathname.split("/")[4];
     const url = `${base_url}/unit/${slug}/pegawai/get/${id}`;
 
     try {

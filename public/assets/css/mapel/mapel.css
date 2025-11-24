@@ -1,0 +1,284 @@
+.mapel-container{
+  padding: 30px;
+}
+
+.mapel-top{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.mapel-top-kiri{
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 30px;
+}
+
+.mapel-top-kiri i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-left: 5px;
+}
+
+.mapel-top-kanan{
+  flex: 1;
+}
+
+.mapel-top-kanan .search-form-mapel{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-wrapper-mapel{
+  flex: 1;
+  position: relative;
+}
+
+.input-wrapper-mapel input{
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--text-muted);
+}
+
+.input-wrapper-mapel i{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  color: var(--text-muted);
+}
+
+.mapel-top-kanan button{
+  background-color: var(--color-blue);
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+/* top styling end */
+
+/* table mapel styling start */
+.table-mapel{
+  margin-top: 20px;
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+  border-collapse: collapse;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-mapel thead{
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+  color: white;
+}
+
+.table-mapel th, .table-mapel tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table-mapel tbody tr:hover {
+  background-color: #dbdbdb;
+  transition: 0.2s;
+}
+
+.table-mapel tbody tr.empty td {
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.row-updated {
+  background: #d3f9d8 !important;
+  transition: .4s;
+}
+
+.row-deleting {
+  background: #ffe3e3;
+  transition: 0.25s;
+}
+/* table mapel styling end */
+
+/* styling modal tambah mapel start */
+.modal-mapel{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.modal-mapel.show{
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-content-mapel{
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 500px;
+}
+
+.modal-content-mapel .modal-mapel-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-mapel-top i{
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.modal-content-mapel label{
+  display: block;
+  margin-top: 10px;
+}
+
+.modal-content-mapel input{
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content-mapel button{
+  background-color: var(--color-blue);
+  padding: 6px 10px;
+  color: white;
+  border-radius: 4px;
+  border:none;
+  margin: 15px auto 0;
+}
+/* styling modal tambah mapel end */
+
+/* styling button modal start */
+.editMapelBtn{
+  background-color: green;
+}
+.hapusMapelBtn{
+  background-color: red;
+}
+
+.editMapelBtn, .hapusMapelBtn{
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+/* styling button modal end */
+
+/* error text start */
+.error-text{
+  font-style: italic;
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+}
+/* error text end */
+
+/* suggestions style start */
+.input-wrapper-mapel{
+  position: relative;
+}
+
+.suggestionsMapel{
+  position: absolute;
+  background: white;
+  max-height: 200px;
+  overflow-y: scroll;
+  display: none;
+  width: 100%;
+  z-index: 1000;
+}
+
+.suggestion-item{
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.suggestion-item.active{
+  background: #e9ecef;
+}
+
+.suggestion-item strong{
+  color: black;
+}
+
+.no-result{
+  font-style: italic;
+  font-size: 15px;
+  padding: 6px 10px;
+  color: var(--text-muted);
+}
+/* suggestions style end */
+
+/* icon i form search style start */
+.input-wrapper-mapel .fa-search{
+  pointer-events: none;
+}
+
+.input-wrapper-mapel #searchIconMapel.active{
+  color: red;
+  font-size: 11px;
+  cursor: pointer;
+  pointer-events: auto;
+}
+/* icon i form search style end */
+
+/* pagination style start */
+.pagination-mapel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  gap: 4px;
+}
+
+.pagination-mapel .page-btn{
+  padding: 6px 12px;
+  background: #dad8d8;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all .2s ease;
+}
+
+.pagination-mapel .page-btn:hover:not(.active) {
+  background: #efefef;
+}
+
+.pagination-mapel .active{
+  background: #4c7cf3;
+  color: white;
+  border-color: #4c7cf3;
+  font-weight: 600;
+}
+/* pagination style end */

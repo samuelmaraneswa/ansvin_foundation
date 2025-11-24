@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-use App\Core\Database;
+use App\Core\Database; 
 use PDO;
 use Exception;
 use App\Helpers\FileValidator;

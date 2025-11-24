@@ -46,12 +46,11 @@
 .card-content h3 {
   margin: 0;
   color: #334155;
-  font-size: 1rem;
   font-weight: 600;
 }
 
 .card-value {
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #1e293b;
   margin: 0.3rem 0;
@@ -74,3 +73,19 @@
 .card-link:hover {
   color: #1d4ed8;
 }
+
+.card-icon.icon-fasilitas{
+  background: rgb(146, 103, 103);
+  color: white;
+}
+
+.card-icon.icon-pegawai{
+  background: var(--color-primary);
+  color: white;
+}
+
+.card-icon.icon-siswa{
+  background: black;
+  color: white;
+}
+

@@ -30,7 +30,7 @@ function openModalUnit(mode = "add", data = null){
 
   // 🔹 Generate NIP otomatis saat mode "add"
   if (mode === "add") {
-    const slug = window.location.pathname.split("/")[2]; // ambil slug dari URL (/unit/{slug}/pegawai)
+    const slug = window.location.pathname.split("/")[4]; // ambil slug dari URL (/unit/{slug}/pegawai)
     generateNipUnit(base_url, slug);
   }
 

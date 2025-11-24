@@ -26,7 +26,7 @@ export async function fetchUnitPegawaiData(keyword = "", page = 1) {
 
   try {
     // Ambil slug dari URL (misal /unit/smp/pegawai → slug = smp)
-    const slug = window.location.pathname.split("/")[2];
+    const slug = window.location.pathname.split("/")[4];
     let url = "";
     
     if(keyword && keyword.trim().length > 0){

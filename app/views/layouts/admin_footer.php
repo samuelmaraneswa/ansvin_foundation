@@ -20,6 +20,10 @@
   <script type="module" src="<?= $base ?>/assets/js/pendaftaran/unit/mainUnitCalonSiswa.js"></script>
 <?php endif; ?>
 
+<?php if($user['role'] === "admin_unit"):?>
+  <script type="module" src="<?= $base ?>/assets/js/mapel/mainMapel.js"></script>
+<?php endif;?>
+
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

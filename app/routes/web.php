@@ -90,3 +90,11 @@ Route::get('/unit/{slug}/calon-siswa', 'Unit\UnitCalonSiswaController@index');
 Route::get('/unit/{slug}/calon-siswa/fetchAll', 'Unit\UnitCalonSiswaController@fetchAll');
 Route::post('/unit/{slug}/calon-siswa/updateStatus', 'Unit\UnitCalonSiswaController@updateStatus');
 Route::get('/unit/{slug}/calon-siswa/search', 'Unit\UnitCalonSiswaController@search');
+
+Route::get('/unit/{slug}/mapel', 'Unit\UnitMapelController@index');
+Route::get('/unit/{slug}/mapel/fetchAll', 'Unit\UnitMapelController@fetchAll');
+Route::post('/unit/{slug}/mapel/store', 'Unit\UnitMapelController@store');
+Route::get('/unit/{slug}/mapel/get/{id}', 'Unit\UnitMapelController@get');
+Route::post('/unit/{slug}/mapel/update/{id}', 'Unit\UnitMapelController@update');
+Route::post('/unit/{slug}/mapel/delete/{id}', 'Unit\UnitMapelController@delete');
+Route::get('/unit/{slug}/mapel/search', 'Unit\UnitMapelController@search');

@@ -50,7 +50,7 @@
         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
 
         <!-- Hidden input untuk edit mode -->
-        <input type="hidden" name="pegawaiUnit_id" value="">
+        <input type="hidden" name="pegawaiUnit_id" value=""> 
 
         <!-- NIP -->
         <label>NIP</label>
@@ -62,9 +62,6 @@
         <!-- Nama -->
         <label>Nama</label>
         <input type="text" name="namaUnit" value="<?= htmlspecialchars($old['namaUnit'] ?? '') ?>">
-        <?php if (!empty($errors['namaUnit'])): ?>
-          <small class="error-msg-unit"><?= htmlspecialchars($errors['namaUnit']) ?></small>
-        <?php endif; ?>
 
         <!-- Jabatan -->
         <label>Jabatan</label>
@@ -76,16 +73,10 @@
             </option>
           <?php endforeach; ?>
         </select>
-        <?php if (!empty($errors['jabatan_id_unit'])): ?>
-          <small class="error-msg-unit"><?= htmlspecialchars($errors['jabatan_id_unit']) ?></small>
-        <?php endif; ?>
 
         <!-- Email -->
         <label>Email</label>
         <input type="email" name="email_unit" value="<?= htmlspecialchars($old['email_unit'] ?? '') ?>">
-        <?php if (!empty($errors['email'])): ?>
-          <small class="error-msg-unit"><?= htmlspecialchars($errors['email_unit']) ?></small>
-        <?php endif; ?>
 
         <!-- Telepon -->
         <label>Telepon</label>
