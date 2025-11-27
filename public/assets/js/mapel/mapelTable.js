@@ -31,8 +31,9 @@ export function mapelTabel(keyword = "", page = 1, limit = 5){
                   <button class="hapusMapelBtn" data-id="${m.id}">Hapus</button>
                 </td>
               </tr>
-            `;})
-            .join("");
+            `;
+          })
+          .join("");
         }
 
         renderPagination(result.pagination, keyword, limit)

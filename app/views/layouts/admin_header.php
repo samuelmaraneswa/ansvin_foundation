@@ -20,6 +20,7 @@ $user = $user ?? null; // pastikan $user dikirim dari controller
   <link rel="stylesheet" href="<?= $base ?>/assets/css/pegawai/unitPegawai.css">
   <link rel="stylesheet" href="<?= $base ?>/assets/css/pendaftaran/admin_pendaftaran.css">
   <link rel="stylesheet" href="<?= $base ?>/assets/css/mapel/mapel.css">
+  <link rel="stylesheet" href="<?= $base ?>/assets/css/guru_mapel/guru_mapel.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>

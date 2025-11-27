@@ -8,7 +8,6 @@ use App\Core\Config;
 use App\Core\Database;
 use App\Helpers\Validator;
 use Exception;
-use FontLib\Table\Type\head;
 
 class UnitMapelController extends AdminController{
   protected $mapel;

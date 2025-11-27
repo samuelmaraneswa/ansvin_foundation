@@ -98,3 +98,12 @@ Route::get('/unit/{slug}/mapel/get/{id}', 'Unit\UnitMapelController@get');
 Route::post('/unit/{slug}/mapel/update/{id}', 'Unit\UnitMapelController@update');
 Route::post('/unit/{slug}/mapel/delete/{id}', 'Unit\UnitMapelController@delete');
 Route::get('/unit/{slug}/mapel/search', 'Unit\UnitMapelController@search');
+
+Route::get('/unit/{slug}/guru_mapel', 'Unit\UnitGuruMapelController@index');
+Route::get('/unit/{slug}/guru_mapel/fetchAll', 'Unit\UnitGuruMapelController@fetchAll');
+Route::get('/unit/{slug}/guru_mapel/dropdown', 'Unit\UnitGuruMapelController@dropdown');
+Route::post('/unit/{slug}/guru_mapel/store', 'Unit\UnitGuruMapelController@store');
+Route::get('/unit/{slug}/guru_mapel/get/{id}', 'Unit\UnitGuruMapelController@get');
+Route::post('/unit/{slug}/guru_mapel/update/{id}', 'Unit\UnitGuruMapelController@update');
+Route::post('/unit/{slug}/guru_mapel/delete/{id}', 'Unit\UnitGuruMapelController@delete');
+Route::get('/unit/{slug}/guru_mapel/search', 'Unit\UnitGuruMapelController@search');

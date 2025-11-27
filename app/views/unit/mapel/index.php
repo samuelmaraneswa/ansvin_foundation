@@ -1,6 +1,6 @@
 <div class="mapel-container">
 
-  <div class="mapel-top">
+  <div class="mapel-top"> 
 
     <div class="mapel-top-kiri">
       <h2><?= $title ?></h2>

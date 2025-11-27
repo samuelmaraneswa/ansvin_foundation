@@ -5,7 +5,6 @@ const addBtn = document.getElementById("btnMapelAdd");
 const formMapel = document.getElementById("formMapel")
 const idMapel = formMapel ? formMapel.querySelector("#mapelId") : null;
 const close = mapelModal ? mapelModal.querySelector(".fa-x") : null;
-const namaMapel = formMapel ? formMapel.querySelector("#namaMapel") : null;
 
 export function openModal(){
   if(!mapelModal) return;
