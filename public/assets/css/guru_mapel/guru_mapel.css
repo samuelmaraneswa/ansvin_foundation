@@ -46,7 +46,7 @@
 
 .input-wrapper-slug input{
   width: 100%;
-  padding: 6px 10px;
+  padding: 6px 25px 6px 10px;
   border-radius: 4px;
   border: 1px solid #333;
 }
@@ -57,6 +57,7 @@
   transform: translateY(-50%);
   right: 10px;
   color: var(--text-muted);
+  margin-left: 10px;
 }
 
 .slug-container-top-kanan button{

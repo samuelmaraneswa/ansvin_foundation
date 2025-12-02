@@ -79,8 +79,8 @@ $unitSlug = $unitSlugMap[$user['unit_id']] ?? null;
     <?php endif; ?>
 
     <?php if ($user && $user['role'] === 'admin_unit'): ?>
-      <li class="has-submenu <?= ($page == 'mapel' || $page == 'guru_mapel') ? 'open' : '' ?>">
-        <a href="javascript:void(0)" class="<?= ($page == 'mapel' || $page == 'guru_mapel') ? 'active' : '' ?>">Pelajaran</a>
+      <li class="has-submenu <?= ($page == 'mapel' || $page == 'guru_mapel' || $page == 'jadpel') ? 'open' : '' ?>">
+        <a href="javascript:void(0)" class="<?= ($page == 'mapel' || $page == 'guru_mapel' || $page == 'jadpel') ? 'active' : '' ?>">Pelajaran</a>
         <ul class="submenu">
           <li>
             <a class="<?= ($page == 'mapel') ? 'active-submenu' : '' ?>"
@@ -90,8 +90,10 @@ $unitSlug = $unitSlugMap[$user['unit_id']] ?? null;
             <a class="<?= ($page == 'guru_mapel') ? 'active-submenu' : '' ?>"
               href="<?= $base ?>/unit/<?= $unitSlug ?>/guru_mapel">Guru Mapel</a>
           </li>
-          <li><a href="<?= $base ?>/unit/smp">Ansvin SMP</a></li>
-          <li><a href="<?= $base ?>/unit/sma">Ansvin SMA</a></li>
+          <li>
+            <a class="<?= ($page == 'jadpel') ? 'active-submenu' : '' ?>"
+              href="<?= $base ?>/unit/<?= $unitSlug ?>/jadpel">Jadwal Pelajaran</a>
+          </li>
         </ul>
       </li>
     <?php endif; ?>

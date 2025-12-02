@@ -7,7 +7,7 @@ use App\Core\Database;
 use App\Core\Auth;
 use App\Helpers\Validator;
 
-class UnitGuruMapelController extends AdminController{
+class UnitGuruMapelController extends AdminController{ 
   private $db;
   protected $guru_mapel;
 

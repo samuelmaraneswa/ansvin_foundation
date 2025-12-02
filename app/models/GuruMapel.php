@@ -163,4 +163,21 @@ class GuruMapel{
     ]);
     return $stmt->fetch()['total'];
   }
+
+  public function getByUnit($unit_id){
+    $stmt = $this->db->prepare("
+      select 
+        gm.id, 
+        p.nama as guru, 
+        m.nama_mapel as mapel 
+        from guru_mapel gm 
+        join pegawai p on p.id = gm.pegawai_id
+        join mata_pelajaran m on m.id = gm.mapel_id
+        where gm.unit_id = :unit_id
+        order by p.nama, m.nama_mapel
+    ");
+
+    $stmt->execute([':unit_id' => $unit_id]);
+    return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+  }
 }

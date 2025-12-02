@@ -107,3 +107,13 @@ Route::get('/unit/{slug}/guru_mapel/get/{id}', 'Unit\UnitGuruMapelController@get
 Route::post('/unit/{slug}/guru_mapel/update/{id}', 'Unit\UnitGuruMapelController@update');
 Route::post('/unit/{slug}/guru_mapel/delete/{id}', 'Unit\UnitGuruMapelController@delete');
 Route::get('/unit/{slug}/guru_mapel/search', 'Unit\UnitGuruMapelController@search');
+
+Route::get('/unit/{slug}/jadpel', 'Unit\UnitJadwalPelajaranController@index');
+Route::get('/unit/{slug}/jadpel/fetchAll', 'Unit\UnitJadwalPelajaranController@fetchAll');
+Route::get('/unit/{slug}/jadpel/getGuruMapelOptions', 'Unit\UnitJadwalPelajaranController@getGuruMapelOptions');
+Route::get('/unit/{slug}/jadpel/getKelasOptions', 'Unit\UnitJadwalPelajaranController@getKelasOptions');
+Route::post('/unit/{slug}/jadpel/store', 'Unit\UnitJadwalPelajaranController@store');
+Route::get('/unit/{slug}/jadpel/getDetail/{id}', 'Unit\UnitJadwalPelajaranController@getDetail');
+Route::post('/unit/{slug}/jadpel/update/{id}', 'Unit\UnitJadwalPelajaranController@update');
+Route::post('/unit/{slug}/jadpel/delete/{id}', 'Unit\UnitJadwalPelajaranController@delete');
+Route::get('/unit/{slug}/jadpel/search', 'Unit\UnitJadwalPelajaranController@search');
